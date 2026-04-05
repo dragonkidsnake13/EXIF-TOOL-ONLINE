@@ -5,14 +5,22 @@ body {
   color: #e2e8f0;
 }
 
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 40px;
   background: #020617;
   border-bottom: 1px solid #1e293b;
 }
 
+.navbar h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* BUTTON */
 .btn {
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   border: none;
@@ -20,51 +28,70 @@ body {
   border-radius: 8px;
   color: white;
   cursor: pointer;
+  font-weight: 500;
 }
 
+/* MAIN LAYOUT FIX */
 .main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
 }
 
-.upload-card, .metadata-card {
+/* CARDS */
+.upload-card,
+.metadata-card {
+  flex: 1;
   background: #020617;
   padding: 25px;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-.subtitle {
-  color: #94a3b8;
+/* TEXT */
+.upload-card h2,
+.metadata-card h2 {
+  margin-top: 0;
 }
 
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+/* DROP ZONE */
 .drop-zone {
   border: 2px dashed #334155;
-  padding: 30px;
+  padding: 40px;
   border-radius: 12px;
   text-align: center;
   cursor: pointer;
-  margin-top: 15px;
+  transition: 0.2s;
 }
 
 .drop-zone:hover {
   border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.05);
 }
 
 .drop-zone input {
   display: none;
 }
 
+/* IMAGE */
 img {
   max-width: 100%;
-  margin-top: 15px;
+  margin-top: 20px;
   border-radius: 12px;
 }
 
+/* METADATA */
 #metadata {
-  max-height: 400px;
+  max-height: 450px;
   overflow-y: auto;
   font-size: 14px;
 }
@@ -75,8 +102,16 @@ img {
   color: #818cf8;
 }
 
+/* FOOTER */
 .footer {
   text-align: center;
   padding: 20px;
   color: #64748b;
+}
+
+/* 🔥 MOBILE FIX */
+@media (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
 }
