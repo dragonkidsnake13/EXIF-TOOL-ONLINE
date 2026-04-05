@@ -1,12 +1,36 @@
 /* ---------------------------------------------------
+   THEME VARIABLES
+--------------------------------------------------- */
+:root {
+  --bg: #0f172a;
+  --card: #0b1120;
+  --text: #e2e8f0;
+  --subtext: #94a3b8;
+  --border: #1e293b;
+  --accent: #6366f1;
+  --accent2: #8b5cf6;
+  --shadow: rgba(0,0,0,0.45);
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --subtext: #475569;
+  --border: #cbd5e1;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------------------------
    GLOBAL
 --------------------------------------------------- */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0f172a;
-  color: #e2e8f0;
+  background: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* Scrollbar */
@@ -29,8 +53,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 22px 40px;
-  background: #020617;
-  border-bottom: 1px solid #1e293b;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
 }
 
@@ -41,11 +65,16 @@ body {
   letter-spacing: -0.5px;
 }
 
+.nav-actions {
+  display: flex;
+  gap: 12px;
+}
+
 /* ---------------------------------------------------
-   BUTTON
+   BUTTONS
 --------------------------------------------------- */
 .btn {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
   border: none;
   padding: 10px 20px;
   border-radius: 10px;
@@ -58,6 +87,21 @@ body {
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+.btn.small {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn.outline:hover {
+  background: rgba(99, 102, 241, 0.1);
 }
 
 /* ---------------------------------------------------
@@ -79,11 +123,11 @@ body {
 .upload-card,
 .metadata-card {
   flex: 1;
-  background: #0b1120;
+  background: var(--card);
   padding: 28px;
   border-radius: 18px;
-  border: 1px solid #1e293b;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px var(--shadow);
   transition: 0.25s;
 }
 
@@ -100,7 +144,7 @@ body {
 }
 
 .subtitle {
-  color: #94a3b8;
+  color: var(--subtext);
   margin-bottom: 20px;
 }
 
@@ -118,7 +162,7 @@ body {
 }
 
 .drop-zone:hover {
-  border-color: #6366f1;
+  border-color: var(--accent);
   background: rgba(99, 102, 241, 0.06);
 }
 
@@ -139,8 +183,8 @@ body {
   max-width: 100%;
   margin-top: 22px;
   border-radius: 14px;
-  border: 1px solid #1e293b;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 25px var(--shadow);
   transition: 0.25s;
 }
 
@@ -162,19 +206,68 @@ body {
   margin-top: 20px;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #818cf8;
+  color: var(--accent);
   font-size: 15px;
   letter-spacing: 0.3px;
 }
 
 .meta-item {
   padding: 8px 0;
-  border-bottom: 1px solid #1e293b;
-  color: #cbd5e1;
+  border-bottom: 1px solid var(--border);
+  color: var(--subtext);
 }
 
 .meta-item strong {
-  color: #e2e8f0;
+  color: var(--text);
+}
+
+/* ---------------------------------------------------
+   API SECTION
+--------------------------------------------------- */
+.api-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.api-key-box {
+  margin-top: 20px;
+  padding: 15px;
+  background: #1e293b;
+  border-radius: 10px;
+  font-family: monospace;
+  font-size: 15px;
+  color: #cbd5e1;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---------------------------------------------------
+   MODAL
+--------------------------------------------------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 16px;
+  width: 350px;
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px var(--shadow);
 }
 
 /* ---------------------------------------------------
@@ -183,7 +276,7 @@ body {
 .footer {
   text-align: center;
   padding: 25px;
-  color: #64748b;
+  color: var(--subtext);
   font-size: 14px;
 }
 
