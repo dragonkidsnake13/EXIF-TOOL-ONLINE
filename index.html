@@ -3,21 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Image Metadata Viewer</title>
+  <title>MetaLens - Image Metadata Tool</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- EXIF Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h2>📷 Advanced Metadata Viewer</h2>
-    <input type="file" id="upload" accept="image/*">
-    <img id="preview" src="" alt="" />
-    <div class="metadata" id="metadata"></div>
-  </div>
+
+  <header class="navbar">
+    <h1>MetaLens</h1>
+    <button class="btn">Upgrade</button>
+  </header>
+
+  <main class="main">
+    <section class="upload-card">
+      <h2>Analyze Your Image</h2>
+      <p class="subtitle">Upload an image to extract metadata instantly</p>
+
+      <div class="drop-zone" id="dropZone">
+        <p>Drag & Drop Image or Click to Upload</p>
+        <input type="file" id="upload" accept="image/*">
+      </div>
+
+      <img id="preview" />
+    </section>
+
+    <section class="metadata-card">
+      <h2>Metadata</h2>
+      <div id="metadata"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 MetaLens</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
