@@ -389,3 +389,10 @@ body {
     width: 100%;
   }
 }
+
+/* Force modal hidden unless JS opens it */
+.modal.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
