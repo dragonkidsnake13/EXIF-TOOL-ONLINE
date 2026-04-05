@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,11 @@
 
   <header class="navbar">
     <h1>MetaLens</h1>
-    <button class="btn">Upgrade</button>
+
+    <div class="nav-actions">
+      <button id="themeToggle" class="btn small">Light Mode</button>
+      <button class="btn">Upgrade</button>
+    </div>
   </header>
 
   <main class="main">
@@ -33,6 +37,28 @@
       <div id="metadata"></div>
     </section>
   </main>
+
+  <!-- API SECTION -->
+  <section class="api-section">
+    <h2>MetaLens API</h2>
+    <p class="subtitle">Developers can integrate image metadata extraction into their apps.</p>
+
+    <button id="generateKey" class="btn">Generate Free API Key</button>
+    <button id="purchaseApi" class="btn outline">Purchase API Access</button>
+
+    <div id="apiKeyBox" class="api-key-box hidden"></div>
+  </section>
+
+  <!-- PURCHASE MODAL -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Purchase API Access</h3>
+      <p>Get high‑rate limits, priority support, and commercial usage rights.</p>
+
+      <button class="btn">Proceed to Checkout</button>
+      <button id="closeModal" class="btn outline">Cancel</button>
+    </div>
+  </div>
 
   <footer class="footer">
     <p>© 2026 MetaLens</p>
