@@ -10,16 +10,21 @@
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <header class="navbar">
     <h1>MetaLens</h1>
 
     <div class="nav-actions">
       <button id="themeToggle" class="btn small">Light Mode</button>
+      <a href="api-docs.html" class="btn small outline">API Docs</a>
       <button class="btn">Upgrade</button>
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main class="main">
+
+    <!-- UPLOAD CARD -->
     <section class="upload-card">
       <h2>Analyze Your Image</h2>
       <p class="subtitle">Upload an image to extract metadata instantly</p>
@@ -32,10 +37,12 @@
       <img id="preview" class="preview-img" />
     </section>
 
+    <!-- METADATA CARD -->
     <section class="metadata-card">
       <h2>Metadata</h2>
       <div id="metadata"></div>
     </section>
+
   </main>
 
   <!-- API SECTION -->
@@ -60,6 +67,7 @@
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2026 MetaLens</p>
   </footer>
