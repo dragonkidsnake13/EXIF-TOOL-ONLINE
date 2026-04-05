@@ -1,22 +1,43 @@
 const upload = document.getElementById('upload');
 const preview = document.getElementById('preview');
 const metadataDiv = document.getElementById('metadata');
+const dropZone = document.getElementById('dropZone');
+
+dropZone.addEventListener('click', () => upload.click());
+
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.style.borderColor = '#6366f1';
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.style.borderColor = '#334155';
+});
+
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  upload.files = e.dataTransfer.files;
+  handleFile(upload.files[0]);
+});
+
+upload.addEventListener('change', () => {
+  handleFile(upload.files[0]);
+});
 
 function addSection(title) {
-  const section = document.createElement('div');
-  section.className = 'section-title';
-  section.textContent = title;
-  metadataDiv.appendChild(section);
+  const el = document.createElement('div');
+  el.className = 'section-title';
+  el.textContent = title;
+  metadataDiv.appendChild(el);
 }
 
 function addItem(key, value) {
-  const div = document.createElement('div');
-  div.textContent = key + ': ' + value;
-  metadataDiv.appendChild(div);
+  const el = document.createElement('div');
+  el.textContent = key + ': ' + value;
+  metadataDiv.appendChild(el);
 }
 
-upload.addEventListener('change', function () {
-  const file = this.files[0];
+function handleFile(file) {
   if (!file) return;
 
   const reader = new FileReader();
@@ -28,45 +49,31 @@ upload.addEventListener('change', function () {
     img.onload = function () {
       metadataDiv.innerHTML = '';
 
-      // Basic Info
       addSection('Basic Info');
-      addItem('File Name', file.name);
-      addItem('File Size (KB)', (file.size / 1024).toFixed(2));
-      addItem('File Type', file.type);
-      addItem('Width', img.width + ' px');
-      addItem('Height', img.height + ' px');
-      addItem('Last Modified', new Date(file.lastModified).toLocaleString());
+      addItem('Name', file.name);
+      addItem('Size (KB)', (file.size / 1024).toFixed(2));
+      addItem('Type', file.type);
+      addItem('Width', img.width);
+      addItem('Height', img.height);
 
-      // EXIF Data
       EXIF.getData(img, function () {
-        const allMetaData = EXIF.getAllTags(this);
-
-        if (Object.keys(allMetaData).length === 0) {
-          addSection('EXIF Data');
-          addItem('Info', 'No EXIF metadata found');
-          return;
-        }
+        const data = EXIF.getAllTags(this);
 
         addSection('EXIF Data');
 
-        for (let tag in allMetaData) {
-          let value = allMetaData[tag];
-
-          if (tag === 'GPSLatitude' || tag === 'GPSLongitude') {
-            value = value.join(', ');
-          }
-
-          addItem(tag, value);
+        if (Object.keys(data).length === 0) {
+          addItem('Info', 'No EXIF data found');
+          return;
         }
 
-        // Key Camera Info
-        addSection('Key Camera Info');
+        for (let key in data) {
+          addItem(key, data[key]);
+        }
+
+        addSection('Camera Info');
         addItem('Camera', EXIF.getTag(this, 'Model') || 'N/A');
-        addItem('Lens', EXIF.getTag(this, 'LensModel') || 'N/A');
         addItem('ISO', EXIF.getTag(this, 'ISOSpeedRatings') || 'N/A');
         addItem('Aperture', EXIF.getTag(this, 'FNumber') || 'N/A');
-        addItem('Shutter Speed', EXIF.getTag(this, 'ExposureTime') || 'N/A');
-        addItem('Date Taken', EXIF.getTag(this, 'DateTimeOriginal') || 'N/A');
       });
     };
 
@@ -74,4 +81,4 @@ upload.addEventListener('change', function () {
   };
 
   reader.readAsDataURL(file);
-});
+}
