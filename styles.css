@@ -1,54 +1,82 @@
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
 }
 
-.container {
-  background: #fff;
-  padding: 20px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+}
+
+.btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 40px;
+}
+
+.upload-card, .metadata-card {
+  background: #020617;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.subtitle {
+  color: #94a3b8;
+}
+
+.drop-zone {
+  border: 2px dashed #334155;
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  width: 420px;
   text-align: center;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
-h2 {
-  margin-bottom: 10px;
+.drop-zone:hover {
+  border-color: #6366f1;
 }
 
-input {
-  margin: 15px 0;
+.drop-zone input {
+  display: none;
 }
 
 img {
   max-width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.metadata {
-  text-align: left;
   margin-top: 15px;
-  font-size: 14px;
-  max-height: 250px;
-  overflow-y: auto;
-  padding-right: 5px;
+  border-radius: 12px;
 }
 
-.metadata div {
-  margin-bottom: 6px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #eee;
+#metadata {
+  max-height: 400px;
+  overflow-y: auto;
+  font-size: 14px;
 }
 
 .section-title {
+  margin-top: 15px;
   font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  color: #444;
+  color: #818cf8;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
 }
