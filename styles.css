@@ -1,61 +1,102 @@
+/* ---------------------------------------------------
+   GLOBAL
+--------------------------------------------------- */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: #0f172a;
   color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* NAVBAR */
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ---------------------------------------------------
+   NAVBAR
+--------------------------------------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 22px 40px;
   background: #020617;
   border-bottom: 1px solid #1e293b;
+  backdrop-filter: blur(10px);
 }
 
 .navbar h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
-/* BUTTON */
+/* ---------------------------------------------------
+   BUTTON
+--------------------------------------------------- */
 .btn {
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
   color: white;
   cursor: pointer;
   font-weight: 500;
+  transition: 0.2s;
 }
 
-/* MAIN LAYOUT FIX */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+/* ---------------------------------------------------
+   MAIN LAYOUT
+--------------------------------------------------- */
 .main {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 30px;
+  gap: 35px;
   padding: 60px 20px;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
 }
 
-/* CARDS */
+/* ---------------------------------------------------
+   CARDS
+--------------------------------------------------- */
 .upload-card,
 .metadata-card {
   flex: 1;
-  background: #020617;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  background: #0b1120;
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid #1e293b;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  transition: 0.25s;
 }
 
-/* TEXT */
+.upload-card:hover,
+.metadata-card:hover {
+  border-color: #334155;
+}
+
 .upload-card h2,
 .metadata-card h2 {
   margin-top: 0;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .subtitle {
@@ -63,55 +104,95 @@ body {
   margin-bottom: 20px;
 }
 
-/* DROP ZONE */
+/* ---------------------------------------------------
+   DROP ZONE
+--------------------------------------------------- */
 .drop-zone {
   border: 2px dashed #334155;
-  padding: 40px;
-  border-radius: 12px;
+  padding: 45px;
+  border-radius: 14px;
   text-align: center;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s;
+  background: rgba(255,255,255,0.02);
 }
 
 .drop-zone:hover {
   border-color: #6366f1;
-  background: rgba(99, 102, 241, 0.05);
+  background: rgba(99, 102, 241, 0.06);
+}
+
+.drop-zone.drag-active {
+  border-color: #818cf8;
+  background: rgba(129, 140, 248, 0.12);
+  box-shadow: 0 0 20px rgba(129, 140, 248, 0.4);
 }
 
 .drop-zone input {
   display: none;
 }
 
-/* IMAGE */
-img {
+/* ---------------------------------------------------
+   IMAGE PREVIEW
+--------------------------------------------------- */
+.preview-img {
   max-width: 100%;
-  margin-top: 20px;
-  border-radius: 12px;
+  margin-top: 22px;
+  border-radius: 14px;
+  border: 1px solid #1e293b;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  transition: 0.25s;
 }
 
-/* METADATA */
+.preview-img:hover {
+  transform: scale(1.01);
+}
+
+/* ---------------------------------------------------
+   METADATA
+--------------------------------------------------- */
 #metadata {
-  max-height: 450px;
+  max-height: 500px;
   overflow-y: auto;
   font-size: 14px;
+  padding-right: 5px;
 }
 
 .section-title {
-  margin-top: 15px;
-  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
   color: #818cf8;
+  font-size: 15px;
+  letter-spacing: 0.3px;
 }
 
-/* FOOTER */
+.meta-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #1e293b;
+  color: #cbd5e1;
+}
+
+.meta-item strong {
+  color: #e2e8f0;
+}
+
+/* ---------------------------------------------------
+   FOOTER
+--------------------------------------------------- */
 .footer {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   color: #64748b;
+  font-size: 14px;
 }
 
-/* 🔥 MOBILE FIX */
+/* ---------------------------------------------------
+   MOBILE
+--------------------------------------------------- */
 @media (max-width: 900px) {
   .main {
     flex-direction: column;
+    padding: 30px 20px;
   }
 }
